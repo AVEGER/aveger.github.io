@@ -1,52 +1,101 @@
 header:
   - titles:
       # @start locale config
-      en      : &EN       Archive
-      en-GB   : *EN
-      en-US   : *EN
-      en-CA   : *EN
-      en-AU   : *EN
-      zh-Hans : &ZH_HANS  归档
-      zh      : *ZH_HANS
-      zh-CN   : *ZH_HANS
-      zh-SG   : *ZH_HANS
-      zh-Hant : &ZH_HANT  歸檔
-      zh-TW   : *ZH_HANT
-      zh-HK   : *ZH_HANT
-      ko      : &KO       아카이브
-      ko-KR   : *KO
-      fr      : &FR       Archives
-      fr-BE   : *FR
-      fr-CA   : *FR
-      fr-CH   : *FR
-      fr-FR   : *FR
-      fr-LU   : *FR
-      tr      : &TR       Arşivdekiler
+      en: &EN Front-end
+      zh-Hans: &ZH_HANS 前端
+      zh: *ZH_HANS
+      # @end locale config
+    url: /customPages/frontEnd.html
+  - titles:
+      # @start locale config
+      en: &EN Python
+      zh-Hans: &ZH_HANS Python
+      zh: *ZH_HANS
+      # @end locale config
+    url: /customPages/Python.html
+  - titles:
+      # @start locale config
+      en: &EN DevOps
+      zh-Hans: &ZH_HANS DevOps
+      zh: *ZH_HANS
+      # @end locale config
+    url: /customPages/Devops.html
+  - titles:
+      # @start locale config
+      en: &EN Linux
+      zh-Hans: &ZH_HANS Linux
+      zh: *ZH_HANS
+      # @end locale config
+    url: /customPages/Linux.html
+  - titles:
+      # @start locale config
+      en: &EN Network
+      zh-Hans: &ZH_HANS 网络工程
+      zh: *ZH_HANS
+      # @end locale config
+    url: /customPages/Network.html
+  - titles:
+      # @start locale config
+      en: &EN note
+      zh-Hans: &ZH_HANS 随笔
+      zh: *ZH_HANS
+      # @end locale config
+    url: /customPages/Notes.html
+  - titles:
+      # @start locale config
+      en: &EN website
+      zh-Hans: &ZH_HANS 收藏的网站
+      zh: *ZH_HANS
+      # @end locale config
+    url: /customPages/website.html
+  - titles:
+      # @start locale config
+      en: &EN Archive
+      en-GB: *EN
+      en-US: *EN
+      en-CA: *EN
+      en-AU: *EN
+      zh-Hans: &ZH_HANS 归档
+      zh: *ZH_HANS
+      zh-CN: *ZH_HANS
+      zh-SG: *ZH_HANS
+      zh-Hant: &ZH_HANT 歸檔
+      zh-TW: *ZH_HANT
+      zh-HK: *ZH_HANT
+      ko: &KO 아카이브
+      ko-KR: *KO
+      fr: &FR Archives
+      fr-BE: *FR
+      fr-CA: *FR
+      fr-CH: *FR
+      fr-FR: *FR
+      fr-LU: *FR
+      tr: &TR Arşivdekiler
       # @end locale config
     url: /archive.html
 
   - titles:
       # @start locale config
-      en      : &EN       About
-      en-GB   : *EN
-      en-US   : *EN
-      en-CA   : *EN
-      en-AU   : *EN
-      zh-Hans : &ZH_HANS  关于
-      zh      : *ZH_HANS
-      zh-CN   : *ZH_HANS
-      zh-SG   : *ZH_HANS
-      zh-Hant : &ZH_HANT  關於
-      zh-TW   : *ZH_HANT
-      zh-HK   : *ZH_HANT
-      ko      : &KO       소개
-      ko-KR   : *KO
-      fr      : &FR       À propos
-      fr-BE   : *FR
-      fr-CA   : *FR
-      fr-CH   : *FR
-      fr-FR   : *FR
-      fr-LU   : *FR
-      tr      : &TR       Hakkında
+      en: &EN About
+      en-GB: *EN
+      en-US: *EN
+      en-CA: *EN
+      en-AU: *EN
+      zh-Hans: &ZH_HANS 关于
+      zh: *ZH_HANS
+      zh-CN: *ZH_HANS
+      zh-SG: *ZH_HANS
+      zh-Hant: &ZH_HANT 關於
+      zh-TW: *ZH_HANT
+      zh-HK: *ZH_HANT
+      ko: &KO 소개
+      ko-KR: *KO
+      fr: &FR À propos
+      fr-BE: *FR
+      fr-CA: *FR
+      fr-CH: *FR
+      fr-FR: *FR
+      fr-LU: *FR
+      tr: &TR Hakkında
       # @end locale config
     url: /about.html

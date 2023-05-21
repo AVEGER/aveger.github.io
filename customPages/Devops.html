@@ -1,0 +1,17 @@
+---
+layout: page
+title: Devops文档
+show_title: true
+---
+
+<div class="layout--archive js-all">
+  <div class="js-result layout--archive__result d-none">
+    {%- include article-list.html articles=site.posts type='brief'
+    isblog_type='true' blog_type='Dev' show_info=true reverse=true
+    group_by='year' -%}
+  </div>
+</div>
+
+<script>
+  {%- include scripts/archieve.js -%}
+</script>

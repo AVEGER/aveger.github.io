@@ -45,7 +45,7 @@
   & > input {
     display: inline-block;
     width: 100%;
-    height: $button-height-lg;
+    height: $button-height-lg ;
     padding: 0 2rem;
     margin: 0;
     line-height: 1 !important;
@@ -96,9 +96,9 @@
   }
   & > .search-box__icon-search, & > .search-box__icon-clear {
     position: absolute;
-    width: $button-height-lg;
-    height: $button-height-lg;
-    line-height: $button-height-lg;
+    width: $button-height-lg ;
+    height: $button-height-lg ;
+    line-height: $button-height-lg ;
     text-align: center;
     vertical-align: middle;
   }

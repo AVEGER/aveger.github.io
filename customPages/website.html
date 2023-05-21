@@ -1,0 +1,15 @@
+---
+  layout: page
+  title: 收藏的网站
+  show_title: true
+---
+
+<div class="layout--archive js-all">
+  <div class="js-result layout--archive__result d-none">
+    {%- include article-list-website.html articles=site.posts -%}
+  </div>
+</div>
+
+<script>
+  {%- include scripts/archieve.js -%}
+</script>

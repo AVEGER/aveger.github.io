@@ -11,150 +11,146 @@
 #    |  |  \   --. /  .'.  \  |  |
 #    `--'   `----''--'   '--' `--'
 
-
-
-
 ## => Site Settings
 ##############################
-text_skin: default # "default" (default), "dark", "forest", "ocean", "chocolate", "orange"
-highlight_theme: default # "default" (default), "tomorrow", "tomorrow-night", "tomorrow-night-eighties", "tomorrow-night-blue", "tomorrow-night-bright"
-url     : # the base hostname & protocol for your site e.g. https://www.someone.com
-baseurl : # does not include hostname
-title   : Your Site Title
+text_skin: ocean # 全局主题"default" (default), "dark", "forest", "ocean", "chocolate", "orange"
+highlight_theme: tomorrow-night # 代码高亮主题"default" (default), "tomorrow", "tomorrow-night", "tomorrow-night-eighties", "tomorrow-night-blue", "tomorrow-night-bright"
+url: # the base hostname & protocol for your site e.g. https://www.someone.com
+baseurl: # does not include hostname
+title: LC
 description: > # this means to ignore newlines until "Language & timezone"
-  Your Site Description
-
-
+  有缘千里来相会，无缘对面不相逢。
+  一叶浮萍归大海，人生何处不相逢。
 ## => Language and Timezone
 ##############################
-lang: # the language of your site, default as "en"
+lang: zh
 timezone: # see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for the available values
-
 
 ## => Author and Social
 ##############################
 author:
-  type      : # "person" (default), "organization"
-  name      : Your Name
-  url       :
-  avatar    : # path or url of avatar image (square)
-  bio       : I am an amazing person.
-  email     :
-  facebook  : # "user_name" the last part of your profile url, e.g. https://www.facebook.com/user_name
-  twitter   : # "user_name" the last part of your profile url, e.g. https://twitter.com/user_name
-  weibo     : # "user_id"   the last part of your profile url, e.g. https://www.weibo.com/user_id/profile?...
+  type: # "person" (default), "organization"
+  name: LJC
+  url:
+  avatar: # path or url of avatar image (square)
+  bio: I am an amazing person.
+  email: lllchengjing@qq.com
+  facebook: # "user_name" the last part of your profile url, e.g. https://www.facebook.com/user_name
+  twitter: # "user_name" the last part of your profile url, e.g. https://twitter.com/user_name
+  weibo: # "user_id"   the last part of your profile url, e.g. https://www.weibo.com/user_id/profile?...
   googleplus: # "user_id"   the last part of your profile url, e.g. https://plus.google.com/u/0/user_id
-  telegram  : # "user_name" the last part of your profile url, e.g. https://t.me/user_name
-  medium    : # "user_name" the last part of your profile url, e.g. https://medium.com/user_name
-  zhihu     : # "user_name" the last part of your profile url, e.g. https://www.zhihu.com/people/user_name
-  douban    : # "user_name" the last part of your profile url, e.g. https://www.douban.com/people/user_name
-  linkedin  : # "user_name" the last part of your profile url, e.g. https://www.linkedin.com/in/user_name
-  github    : # "user_name" the last part of your profile url, e.g. https://github.com/user_name
-  npm       : # "user_name" the last part of your profile url, e.g. https://www.npmjs.com/~user_name
+  telegram: # "user_name" the last part of your profile url, e.g. https://t.me/user_name
+  medium: # "user_name" the last part of your profile url, e.g. https://medium.com/user_name
+  zhihu: # "user_name" the last part of your profile url, e.g. https://www.zhihu.com/people/user_name
+  douban: # "user_name" the last part of your profile url, e.g. https://www.douban.com/people/user_name
+  linkedin: # "user_name" the last part of your profile url, e.g. https://www.linkedin.com/in/user_name
+  github: aveger # "user_name" the last part of your profile url, e.g. https://github.com/user_name
+  npm: # "user_name" the last part of your profile url, e.g. https://www.npmjs.com/~user_name
 
-
-## => GitHub Repository (if the site is hosted by GitHub)
+## => GitHub Repository (if the site is hosted by GitHub)GitHub 源码仓库
 ##############################
-repository: user_name/repo_name
-repository_tree: master
-
+repository: AVEGER/aveger.github.io
+repository_tree: main
 
 ## => Paths
 ##############################
 paths:
-  root    : # title link url, "/" (default)
-  home    : # home layout url, "/" (default)
-  archive : # "/archive.html" (default)
-  rss     : # "/feed.xml" (default)
-
+  root: # title link url, "/" (default)
+  home: # home layout url, "/" (default)
+  archive: # "/archive.html" (default)
+  rss: # "/feed.xml" (default)
 
 ## => Post
 ##############################
-## excerpt
+## excerpt-摘要控制
 excerpt_separator: <!--more-->
+excerpt_type: html
 
-## license
+## license-许可协议
 license: CC-BY-NC-4.0 # "CC-BY-4.0", "CC-BY-SA-4.0", "CC-BY-NC-4.0", "CC-BY-ND-4.0"
 
-## TOC
+## TOC-作为文章目录的元素。
 toc:
-  selectors: # "h1,h2,h3" (default)
+  selectors: h1,h2,h3,h4 # "h1,h2,h3" (default)
 
-
-## => Markdown Enhancements
+## => Markdown Enhancements-Markdown 增强
 ##############################
-## Mathjax
+## Mathjax-运行在浏览器中的开源数学符号渲染引擎
 mathjax: # false (default), true
 mathjax_autoNumber: # false (default), true
 
-## Mermaid
+## Mermaid-是 Markdown 文档中一款绘图插件，其语法完全是 markdownish 的
 mermaid: # false (default), true
 
-## Chart
+## Chart-图表
 chart: # false (default), true
 
+## collections 指定一个集合名称，以及该集合对应的文件夹路径。
+collections:
+  my_website_collection:
+    output: true
+    permalink: # 路径
 
-## => Paginate
+## => Paginate-分页
 ##############################
 paginate: 8
 paginate_path: /page:num # don't change this unless for special need
 
-
-## => Sources
+## => Sources-CDN 源
 ##############################
 sources: # bootcdn (default), unpkg
 
-
-## => Sharing
+## => Sharing-分享
+## | 名称 | 分享系统提供方 | 最低版本 |
 ##############################
 sharing:
   provider: false # false (default), "addtoany", "addthis", "custom"
-
   ## AddThis
   addthis:
     id: # AddThis pubid, e.g. ra-5xxxxxxxxxxx
 
-
-## => Comments
+## => Comments-评论
+## 需要注册一个第三方的评论系统
+## 你需要在页面的头信息里设置 `sharing` 属性为 `true` 来开启该页的评论，
 ##############################
 comments:
-  provider: false # false (default), "disqus", "gitalk", "valine", "custom"
+  provider: disqus # false (default), "disqus", "gitalk", "valine", "custom"
 
   ## Disqus
   disqus:
-    shortname: # the Disqus shortname for the site
+    shortname: aveger-github-io # the Disqus shortname for the site
 
   ## Gitalk
   # please refer to https://github.com/gitalk/gitalk for more info.
   gitalk:
-    clientID    : # GitHub Application Client ID
+    clientID: # GitHub Application Client ID
     clientSecret: # GitHub Application Client Secret
-    repository  : # GitHub repo
-    owner       : # GitHub repo owner
-    admin: # GitHub repo owner and collaborators, only these guys can initialize GitHub issues, IT IS A LIST.
+    repository: # GitHub repo
+    owner: # GitHub repo owner
+    admin:
       # - your GitHub Id
 
   ## Valine
   # please refer to https://valine.js.org/en/ for more info.
   valine:
-    app_id      : # LeanCloud App id
-    app_key     : # LeanCloud App key
-    placeholder : # Prompt information
-    visitor     : # false (default)
-    meta        : # "[nick, mail, link]" (default) nickname, E-mail, Personal-site
+    app_id: # LeanCloud App id
+    app_key: # LeanCloud App key
+    placeholder: # Prompt information
+    visitor: # false (default)
+    meta: # "[nick, mail, link]" (default) nickname, E-mail, Personal-site
 
-
-## => Pageview
+## => Pageview-文章点击量
+## 使用 LeanCloud 作为点击量功能的后台服务
+## 你需要建立一个 LeanCloud 应用，然后在应用中建立一个 Class，之后将必要的信息填写到 *_config.yml* 文件中。
 ##############################
 pageview:
   provider: false # false (default), "leancloud", "custom"
 
   ## Leancloud
   leancloud:
-    app_id    : # LeanCloud App id
-    app_key   : # LeanCloud App key
-    app_class : # LeanCloud App class
-
+    app_id: # LeanCloud App id
+    app_key: # LeanCloud App key
+    app_class: # LeanCloud App class
 
 ## => Search
 ##############################
@@ -165,23 +161,21 @@ search:
   google:
     custom_search_engine_id: # Google Custom Search Engine ID
 
-
-## => Analytics
+## => Analytics站点统计
 ##############################
 analytics:
   provider: false # false (default), "google", "custom"
 
   ## Google Analytics
   google:
-    tracking_id : # Google Analytics id for the site
+    tracking_id: UA-71907556-1 # Google Analytics id for the site
     anonymize_ip: false # Anonymize IP tracking for Analytics
-
 
 ## => Build
 ##############################
-markdown    : kramdown
-highlighter : rouge
-permalink   : date
+markdown: kramdown
+highlighter: rouge
+permalink: date
 
 exclude:
   - CHANGELOG.md
@@ -198,7 +192,6 @@ exclude:
   - /docs
   - /node_modules
   - /screenshots
-  - /test
   - /vendor
 
 defaults:
@@ -214,7 +207,6 @@ defaults:
       show_edit_on_github: true
       show_subscribe: true
       pageview: true
-
 
 ## => Plugins
 ##############################

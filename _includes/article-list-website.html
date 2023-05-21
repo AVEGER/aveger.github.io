@@ -1,0 +1,16 @@
+{%- assign title = include.title -%} {%- assign _sorted_list = include.articles
+-%}
+
+<div class="article_list_website">
+  {%- for _article in _sorted_list -%} {%- for _tags in _article.tags -%} {%- if
+  _tags == "website" -%}
+  <div>
+    {%- for item in _article.content -%}
+    <div class="items">{{item}}</div>
+    {%- endfor -%}
+    <!-- <a itemprop="headline" class="item__header" href="{{ _article_url }}"
+      >{{ _article.title }}</a
+    > -->
+  </div>
+  {%- endif -%} {%- endfor -%} {%- endfor -%}
+</div>
