@@ -114,28 +114,28 @@ sharing:
 ## 你需要在页面的头信息里设置 `sharing` 属性为 `true` 来开启该页的评论，
 ##############################
 comments:
-  provider: disqus # false (default), "disqus", "gitalk", "valine", "custom"
+  provider: valine # false (default), "disqus", "gitalk", "valine", "custom"
 
   ## Disqus
   disqus:
     shortname: aveger-github-io # the Disqus shortname for the site
 
-  ## Gitalk
+  ## Gitalk 需登录github的进行评论的系统
   # please refer to https://github.com/gitalk/gitalk for more info.
   gitalk:
-    clientID: # GitHub Application Client ID
-    clientSecret: # GitHub Application Client Secret
+    clientID: # 应用ID；GitHub Application Client ID
+    clientSecret: # 客户端秘钥GitHub Application Client Secret
     repository: # GitHub repo
     owner: # GitHub repo owner
     admin:
       # - your GitHub Id
 
-  ## Valine
+  ## Valine无需登录的评论系统
   # please refer to https://valine.js.org/en/ for more info.
   valine:
-    app_id: # LeanCloud App id
-    app_key: # LeanCloud App key
-    placeholder: # Prompt information
+    app_id: MTqN9yluJChfZ6v1hJEzattd-gzGzoHsz # LeanCloud App id
+    app_key: sNO08DCiJCoTHvHv3P1StQEY # LeanCloud App key
+    placeholder: JUST GO GO!!! # Prompt information
     visitor: # false (default)
     meta: # "[nick, mail, link]" (default) nickname, E-mail, Personal-site
 
@@ -164,12 +164,12 @@ search:
 ## => Analytics站点统计
 ##############################
 analytics:
-  provider: false # false (default), "google", "custom"
+  provider: google # false (default), "google", "custom"
 
   ## Google Analytics
   google:
-    tracking_id: UA-71907556-1 # Google Analytics id for the site
-    anonymize_ip: false # Anonymize IP tracking for Analytics
+    tracking_id: G-4NY26HQBLY # Google Analytics id for the site
+    anonymize_ip: true #是否奖所有事件的 IP 地址匿名化 Anonymize IP tracking for Analytics
 
 ## => Build
 ##############################
