@@ -135,9 +135,9 @@ comments:
   valine:
     app_id: MTqN9yluJChfZ6v1hJEzattd-gzGzoHsz # LeanCloud App id
     app_key: sNO08DCiJCoTHvHv3P1StQEY # LeanCloud App key
-    placeholder: JUST GO GO!!! # Prompt information
+    placeholder: 请输入您的评论！ JUST GO GO!!! # Prompt information
     visitor: # false (default)
-    meta: # "[nick, mail, link]" (default) nickname, E-mail, Personal-site
+    meta: ["昵称/nickname", "邮箱/E-mail", "网页/Website(http://)"] # "[nick, mail, link]" (default) nickname, E-mail, Personal-site
 
 ## => Pageview-文章点击量
 ## 使用 LeanCloud 作为点击量功能的后台服务
