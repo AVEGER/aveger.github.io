@@ -137,20 +137,20 @@ comments:
     app_key: sNO08DCiJCoTHvHv3P1StQEY # LeanCloud App key
     placeholder: 请输入您的评论！ JUST GO GO!!! # Prompt information
     visitor: # false (default)
-    meta: ["昵称/nickname", "邮箱/E-mail", "网页/Website(http://)"] # "[nick, mail, link]" (default) nickname, E-mail, Personal-site
+    meta: ["昵称/nickname", "邮箱/E-mail", "网页链接/link"] # "[nick, mail, link]" (default) nickname, E-mail, Personal-site
 
 ## => Pageview-文章点击量
 ## 使用 LeanCloud 作为点击量功能的后台服务
 ## 你需要建立一个 LeanCloud 应用，然后在应用中建立一个 Class，之后将必要的信息填写到 *_config.yml* 文件中。
 ##############################
 pageview:
-  provider: false # false (default), "leancloud", "custom"
+  provider: leancloud # false (default), "leancloud", "custom"
 
   ## Leancloud
   leancloud:
-    app_id: # LeanCloud App id
-    app_key: # LeanCloud App key
-    app_class: # LeanCloud App class
+    app_id: MTqN9yluJChfZ6v1hJEzattd-gzGzoHsz # LeanCloud App id
+    app_key: sNO08DCiJCoTHvHv3P1StQEY # LeanCloud App key
+    app_class: GithubPageview # LeanCloud App class
 
 ## => Search
 ##############################
