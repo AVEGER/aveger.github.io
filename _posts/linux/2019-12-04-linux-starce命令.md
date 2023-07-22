@@ -1,9 +1,9 @@
 ---
-title: Linux---strace命令
+title: Linux---使用strace命令进行Linux系统调试
 tags: Linux
 ---
 
-# 使用strace命令进行Linux系统调试
+
 
 当我们需要进行系统调试和故障排查。在这个过程中，strace命令是一个非常有用的工具，它可以跟踪和分析应用程序的系统调用和信号，帮助我们定位问题并解决各种系统级别的难题。下面介绍了strace命令的基本用法和一些常见的应用场景。
 

@@ -1,9 +1,9 @@
 ---
-title: Linux---Centos和Ubuntu
+title: Linux---CentOS与Ubuntu：两大主流Linux发行版的比较
 tags: Linux
 ---
 
-# CentOS与Ubuntu：两大主流Linux发行版的比较
+
 
 在众多Linux发行版中，CentOS和Ubuntu是两大主流发行版，各自有着不同的优势和适用场景。在本篇博客中，我将对CentOS和Ubuntu进行比较，帮助您在不同情况下做出明智的选择。
 

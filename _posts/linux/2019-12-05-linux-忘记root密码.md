@@ -3,7 +3,7 @@ title: Linux---忘记root密码如何操作
 tags: Linux
 ---
 
-# 忘记root密码：Linux系统的操作与解决方案
+
 
 ## 个人使用过的方法（centos 7）
 - **大概操作概念理论**
