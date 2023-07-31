@@ -3,7 +3,7 @@ title: Linux---NTP部署简易指南
 tags: Linux
 ---
 
-在Linux运维中，经常需要确保服务器的时间同步和准确性。NTP（Network Time Protocol）是一种常用的网络时间同步协议，它可以帮助我们实现服务器时间的精确同步。
+在Linux运维中，经常需要确保服务器的时间同步和准确性。NTP（Network Time Protocol）是一种常用的网络时间同步协议，它可以帮助我们实现服务器时间的精确同步。<!--more-->
 
 ## 什么是NTP？
 
