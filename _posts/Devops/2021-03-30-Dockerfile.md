@@ -1,11 +1,11 @@
 ---
-title: Dockerfile
+title: Dockerfile简介
 tags: Dev
 ---
 
 # 编写 Dockerfile
 
-Docker 是一个开源的容器化平台，可以让开发者将应用程序打包成一个可移植的容器，然后部署到任何支持 Docker 的环境中。Dockerfile 是 Docker 构建镜像的脚本文件，它包含了构建 Docker 镜像所需的所有指令。
+Docker 是一个开源的容器化平台，可以让开发者将应用程序打包成一个可移植的容器，然后部署到任何支持 Docker 的环境中。Dockerfile 是 Docker 构建镜像的脚本文件，它包含了构建 Docker 镜像所需的所有指令。<!--more-->
 
 ## 创建 Dockerfile
 
