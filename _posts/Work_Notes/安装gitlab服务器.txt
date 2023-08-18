@@ -1,0 +1,95 @@
+﻿1. 安装依赖包。
+sudo yum install -y curl policycoreutils-python openssh-server
+2.设置SSH开机自启动并启动SSH服务。
+sudo systemctl enable sshd
+sudo systemctl start sshd
+3.安装Postfix来发送通知邮件。
+sudo yum install postfix
+4.设置Postfix开机自启动。
+sudo systemctl enable postfix
+5.启动Postfix服务。
+输入命令vim /etc/postfix/main.cf打开main.cf文件并找到下图内容：                                                gitlab服务
+6.添加gitlab镜像
+wget https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7/gitlab-ce-10.0.0-ce.0.el7.x86_64.rpm
+
+7.安装gitlab （需要安装python）
+rpm -i gitlab-ce-10.0.0-ce.0.el7.x86_64.rpm
+
+8.修改gitlab配置文件指定服务器ip和自定义端口：
+vim  /etc/gitlab/gitlab.rb
+external_url 'http://192.168.33.130:8081 #定义端口
+默认：8080端口
+
+8.重置并启动GitLab
+执行：
+gitlab-ctl reconfigure #初始化
+gitlab-ctl restart    #重启
+
+10.访问 GitLab页面
+
+如果没有域名，直接输入服务器ip和指定端口进行访问
+初始账户: root 密码:5iveL!fe
+第一次登录修改密码
+
+11.汉化
+11.1停止gitlab服务
+gitlab-ctl stop
+11.2查看版本
+cat /opt/gitlab/embedded/service/gitlab-rails/VERSION
+10.0.0
+yum -y install git
+
+11.3克隆获取汉化版本库
+git clone https://gitlab.com/xhang/gitlab.git
+
+11.4查看该汉化补丁的版本
+cat gitlab/VERSION
+10.2.3
+
+cd /root/gitlab/
+git diff v10.0.0 v10.0.0-zh >/tmp/10.0.0-zh.diff
+
+yum install patch -y
+patch -d /opt/gitlab/embedded/service/gitlab-rails -p1 < /tmp/10.0.0-zh.diff
+
+11.5启动gitlab
+gitlab-ctl start
+
+重新配置gitlab 
+gitlab-ctl reconfigure
+
+12.邮箱配置
+vim /etc/gitlab/gitlab.rb
+腾讯企业邮箱这么做才是对的，不然来自地址的501邮件必须与授权用户相同：
+
+gitlab_rails ['smtp_enable'] = true 
+gitlab_rails ['smtp_address'] =“ smtp.exmail.qq.com ” 
+gitlab_rails ['smtp_port'] = 465 
+gitlab_rails ['smtp_user_name'] =“xxxx@xx.com” 
+gitlab_rails ['smtp_password '] =“密码” 
+gitlab_rails ['smtp_authentication'] =“登录” 
+gitlab_rails ['smtp_ssl'] = true 
+gitlab_rails ['smtp_enable_starttls_auto'] = true 
+gitlab_rails ['smtp_tls'] = true 
+gitlab_rails ['gitlab_email_from'] ='xxxx @ xx.com'gitlab_rails 
+['gitlab_email_reply_to'] 
+='xxxx@xx.com'gitlab_rails ['smtp_domain'] =“ exmail.qq.com ”
+gitlab-ctl reconfigure #初始化
+gitlab-ctl restart    #重启
+
+13测试 邮箱配置
+gitlab-rails console
+>Notify.test_email('jianglz@beyebe.com', 'test', 'Message Body').deliver_now  +回车
+>exit
+
+14 ssh 配置
+(1)安装好git 后右键 git bash here 
+如果之前没有生成ssh密钥，使用命令：
+ssh-keygen -t rsa -C "jianglz@beyebe.com"来生成密钥。其中生成的文件，id_rsa为自己电脑上的私钥，id_rsa.pub为放在服务器上验证的公钥。
+（3）把id_rsa.pub放到ssh密钥就可以了
+
+来源于网络https://blog.csdn.net/xiegh2014/article/details/78802591
+邮箱配置来源网络https://docs.gitlab.com.cn/omnibus/settings/smtp.html#qq-exmail
+git 安装来源https://www.liaoxuefeng.com/wiki/896043488029600/896954117292416
+
+我是jlz
