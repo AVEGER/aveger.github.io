@@ -3,6 +3,14 @@
 # 安装 K8S-1.18.0一套
 # Data:2023.08.17
 # --------LC---------
+if [[ $1 == "master" || $1 == "node" ]]
+then
+  echo "当前节点为$1,开始安装！"
+else
+  echo "请输入正确的当前节点类型，master/node。"
+  exit 1
+fi
+
 if docker version
 then
     echo '
@@ -54,7 +62,7 @@ fi
 # 设置为开机自启动即可，由于没有生成配置文件，集群初始化后自动启动：
 systemctl enable kubelet
 
-if [ $1 = 'master' ]
+if [ $1 == 'master' ]
 then
     # 由于默认拉取镜像地址k8s.gcr.io国内无法访问，这里需要指定阿里云镜像仓库地址
     kubeadm init \
@@ -63,10 +71,11 @@ then
         --kubernetes-version v1.18.0 \
         --service-cidr=10.96.0.0/12 \
         --pod-network-cidr=10.244.0.0/16
-    
+
     echo '
     ----------------------------------------------------------
-    ###############以上是需要部署到node节点的信息#############
+    ###############以上是需要部署到node节点的信息##################
+    ###再次查看的命令kubeadm token create --print-join-command###
     ----------------------------------------------------------
 
 
@@ -79,10 +88,20 @@ then
     kubectl get nodes
     echo '
     ----------------------------------------------------------
-    ----kubectl get nodes查看节点，显示有就正常----
+    --------   kubectl get nodes查看节点，显示有就正常   ---------
     ----------------------------------------------------------
     '
-elif [ $1 = 'node' ]
+
+    echo "最后还需要部署CNI插件，不然可能会在状态上会一直显示 Notready
+    部署命令：
+    # 网络好，有魔法可以直接下载
+    wget https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+    kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+
+    # 网络不行，直接访问 https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml 复制里面的代码为一个 .yml 文件，然后直接安装即可
+    kubectl apply -f kube-flannel.yml
+    "
+elif [ $1 == 'node' ]
 then
     echo '
     ----------------------------------------------------------

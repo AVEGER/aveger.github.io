@@ -1,5 +1,13 @@
 #!/bin/bash
 set_hostname=$1
+if [[ ${set_hostname} == "master" || ${set_hostname} == "node" ]]
+then
+  echo "当前节点为${set_hostname},开始安装！"
+else
+  echo "请输入正确的当前节点类型，master/node。"
+  exit 1
+fi
+
 sudo hostnamectl set-hostname ${set_hostname}
 #关闭防火墙
 if [[ $(firewall-cmd --state) != running ]]
@@ -13,18 +21,6 @@ fi
 sed -ri 's/.*swap.*/#&/' /etc/fstab
 #临时关闭eslinux
 setenforce 0
-
-if [ ${set_hostname} = 'master' ]
-then
-    echo '需修改host文件,格式为地址 + 主机名
-    例如：
-    sudo cat >> /etc/hosts << EOF
-        192.168.10.81 k8s-master
-        192.168.10.82 k8s-node1
-    EOF'
-else
-    echo '非master节点无需安装！'
-fi
 
 sudo cat > /etc/sysctl.d/k8s.conf << EOF
     net.bridge.bridge-nf-call-ip6tables = 1
@@ -83,5 +79,17 @@ sudo chmod 755 /etc/sysconfig/modules/ipvs.modules && bash /etc/sysconfig/module
 
 # 检查是否加载：
 sudo lsmod | grep -e ipvs -e nf_conntrack_ipv4
+
+if [ ${set_hostname} = 'master' ]
+then
+    echo '请手动修改host文件,格式为地址 + 主机名
+    例如：
+sudo cat >> /etc/hosts << EOF
+    192.168.10.81 k8s-master
+    192.168.10.82 k8s-node1
+EOF'
+else
+    echo '非master节点无需安装！'
+fi
 
 echo '完成基本环境部署！--***请重启***--'
