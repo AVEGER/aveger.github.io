@@ -2,8 +2,13 @@
 set_hostname=$1
 sudo hostnamectl set-hostname ${set_hostname}
 #关闭防火墙
-sudo systemctl stop firewalld
-sudo systemctl disable firewalld
+if [[ $(firewall-cmd --state) != running ]]
+then
+  echo '防火墙已关闭'
+else
+  sudo systemctl stop firewalld
+  sudo systemctl disable firewalld
+fi
 #关闭swap
 sed -ri 's/.*swap.*/#&/' /etc/fstab
 #临时关闭eslinux
@@ -18,7 +23,7 @@ then
         192.168.10.82 k8s-node1
     EOF'
 else
-    echo '非master节点无需安装！' 
+    echo '非master节点无需安装！'
 fi
 
 sudo cat > /etc/sysctl.d/k8s.conf << EOF
@@ -36,14 +41,14 @@ if sudo lsmod | grep br_netfilter
 then
     echo 'br_netfilter模块加载成功'
     # 生效
-    sudo sysctl --system 
+    sudo sysctl --system
 else
     echo 'br_netfilter模块加载失败，请检查是否安装！'
     exit 1
 fi
 
 # 在每个节点添加时间同步：
-if sudo rpm -qa | grep ntpdate; 
+if sudo rpm -qa | grep ntpdate;
 then
     sudo ntpdate time.windows.com
 else
@@ -56,7 +61,7 @@ else
 fi
 
 # 在每个节点安装ipset和ipvsadm：
-if sudo rpm -qa | grep ipset && sudo rpm -qa | grep ipvsadm; 
+if sudo rpm -qa | grep ipset && sudo rpm -qa | grep ipvsadm;
 then
     sudo yum -y install ipset ipvsadm
 else
