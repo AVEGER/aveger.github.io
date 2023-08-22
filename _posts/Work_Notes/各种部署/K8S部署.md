@@ -73,7 +73,7 @@ lsmod | grep br_netfilter
 ```
 ```shell
 # 生效
-sysctl --system 
+sysctl --system
 ```
 
 #### 2.7、时间同步
@@ -144,7 +144,7 @@ sudo mkdir -p /etc/docker
 # 写入文件设置docker镜像源加速
 sudo tee /etc/docker/daemon.json <<-'EOF'
 {
-  "exec-opts": ["native.cgroupdriver=systemd"],	
+  "exec-opts": ["native.cgroupdriver=systemd"],
   "registry-mirrors": ["https://b9pmyelo.mirror.aliyuncs.com"]
 }
 EOF
@@ -259,7 +259,7 @@ kubectl get nodes
 # 向k8s集群中添加Node节点
 kubeadm join 192.168.10.81:6443 --token hzpi5r.mtmg3yx7ah7tgazt \
     --discovery-token-ca-cert-hash sha256:7b557a2fc1441c06185b8de0b87311d58b50b0aca69993f161b8f1243b65193f
-    
+
     # IP地址为master节点的地址，整个的内容其实就时生成在部署master节点时的
 ```
 
@@ -329,5 +329,10 @@ kubectl cluster-info
 ```shell
 kubectl cluster-info
 # 显示正常输出则表示已部署完成
+```
+- 使用helm作为K8S的包管理器能更快速的部署各种K8S服务
+
+```shell
+安装地址：https://helm.sh/zh/docs/intro/install/
 ```
 

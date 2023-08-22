@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: clound
+  namespace: default  #指定pvc属于哪个命名空间
+spec:
+  storageClassName: nfs
+  accessModes:
+  - ReadWriteMany  #读写模式
+  resources:
+    requests:
+      storage: 500Mi

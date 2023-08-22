@@ -35,8 +35,8 @@ metadata:
   name: yournamespace  #命名空间名称
   labels:
     name: your-lab  #pod标签
-    
-    
+
+
 # 查看命名空间
 kubectl get namespace	# 查看所有命名空间
 kubectl get ns	# 简写
@@ -54,3 +54,23 @@ kubectl get namespace yournamespace	# 查看指定命名空间：yournamespace
 ##### 2. 创建 Control中的 Deployment
 
 ##### 3. 创建 Service
+
+##### 4. 一些其他命令
+
+```shell
+修改ROLE的值：
+kubectl label no node kubernetes.io/role=work
+# node代表除master的名称、work是你想要设置的值
+
+关于K8S master节点默认有污点设置：
+使用kubeadm部署的kubernetes集群，其中master节点上默认拒绝pod调度运行在此上面。
+官方术语是：master默认被赋予了一个taints(污点)，不推荐删除master的污点设置
+
+1. 查看节点Taints
+kubectl describe node NODE_NAME | grep Taints
+2. 删除节点taints：
+kubectl taint node k8s-master node-role.kubernetes.io/master:NoSchedule-
+3. 增加污点（taints）增加污点，禁止pod调度到该节点上
+kubectl taint node k8s-master node-role.kubernetes.io/master:NoSchedule
+# k7s-master代表节点名称、
+```

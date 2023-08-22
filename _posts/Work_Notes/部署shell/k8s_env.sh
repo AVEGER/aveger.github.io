@@ -92,4 +92,7 @@ else
     echo '非master节点无需安装！'
 fi
 
-echo '完成基本环境部署！--***请重启***--'
+echo '
+完成基本环境部署！--***请重启***--
+重启后运行：setenforce 0   临时关闭eslinux
+'

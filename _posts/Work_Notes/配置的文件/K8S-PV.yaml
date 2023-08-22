@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: data-apisix-etcd-1  # 你的pv名字
+  namespace: default #命名空间创建  kubectl create ns cloud 可以不用指定
+  labels:
+    apisix: test  # 自定义标签
+spec: # 此部分定义了PersistentVolume的详细配置
+  capacity:
+    storage: 10Gi   #设置空间大小
+  accessModes:  # 定义访问模式
+    - ReadWriteOnce
+  volumeMode: Filesystem
+  persistentVolumeReclaimPolicy: Delete #定义了当此PersistentVolume不再需要时，Kubernetes将如何处理它。
+                                        #这里设置为删除，即删除该卷并释放其存储空间。
+  storageClassName: nfs  # 定义存储类
+  local:
+    path:  # 定义了此本地存储卷的路径
+  nodeAffinity: # 与节点的亲和性，这里设置为只在名为master的节点上运行
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - master
