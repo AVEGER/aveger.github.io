@@ -46,7 +46,8 @@ kubectl get namespace yournamespace	# 查看指定命名空间：yournamespace
 2. 设置默认命名空间
 
 ```
-
+kubectl config set-context default --namespace=your_namespace
+# 最后面设置你需要设置的命名空间名字
 ```
 
 

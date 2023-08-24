@@ -7,7 +7,7 @@ show variables like 'max_connections';
 
 2. 查看Mysql访问的端口号
 ```shell
-show gobal variables like 'port';
+show global variables like 'port';
 ```
 
 3. 查看是否允许远程连接,mysql为安全起见,默认只允许本地登录数据库
