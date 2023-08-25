@@ -28,13 +28,20 @@ sudo yum-config-manager \
 sudo yum makecache fast
 
 # 安装最新稳定版本的docker
-sudo yum install -y docker-ce
+sudo yum install -y docker-ce docker-compose-plugin
+# 属于docker的一整套：
+# docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 # 配置镜像加速器
 sudo mkdir -p /etc/docker
 sudo tee /etc/docker/daemon.json <<-'EOF'
 {
-  "registry-mirrors": ["http://hub-mirror.c.163.com"]
+  "registry-mirrors": [
+    "http://hub-mirror.c.163.com",
+    "https://registry.docker-cn.com",
+    "https://docker.mirrors.ustc.edu.cn",
+    "https://cr.console.aliyun.com/"
+  ]
 }
 EOF
 
@@ -45,4 +52,6 @@ sudo systemctl enable docker
 # 配置当前用户对docker的执行权限
 sudo groupadd docker
 sudo gpasswd -a ${USER} docker
+
+# 重启docker使配置生效
 sudo systemctl restart docker
