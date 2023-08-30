@@ -1,4 +1,22 @@
 ### Centos 7部署Gitlab
+1. 直接下载gitlab-ce安装即可
+
+```shell
+下载地址：https://packages.gitlab.com/gitlab/gitlab-ce
+选择合适的安装包
+
+我的系统是Cetnos 7，选择 gitlab-ce-16.3.0-ce.0.el7.x86_64.rpm
+```
+
+2. 环境的安装
+
+```shell
+主要依赖包：
+policycoreutils-python
+perl
+setools-libs
+audit-libs-python等
+```
 
 
 ### Docker部署Gitlab
