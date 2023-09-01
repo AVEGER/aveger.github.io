@@ -1,13 +1,17 @@
 ### Ubuntu 16.04.7 反复登录且特定用户无法登录，guest无需密码却可以登录。
 1. 查看 /etc/default/grub 文件
+
 ```shell
 GRUB_CMDLINE_LINUX_DEFAULT="quiet splash acpi_osi=linux"
 GRUB_CMDLINE_LINUX=""
 ```
+
 2. 修改 /etc/default/grub 文件后，需要更新
+
 ```shell
 sudo update-grub
 ```
+
 3. 解释：
 - Grub引导了系统进行启动，所以它的参数被传入了，即nomodeset（调用集显）如果存在，系统就会一直调用集显，然后就出现循环登录或者黑屏。由于刚刚安装系统一般没有驱动，很多人只能通过调用集显去进入图形界面（除非在命令行下安装了驱动），导致了nomodeset参数的加入。
 - 而acpi_osi=linux是告诉Grub，电脑将以Linux系统启动，调用其中驱动，所以可以用Nvidia的驱动进行显示了。
@@ -105,14 +109,14 @@ sudo chmod 777 ~/.vnc/xstartup
         1920x1080      0.00*
      ````
 
-     
+
 
   3.  Atlas 300I (Model 3010) 华为计算显卡，在/etc/default/grub 里面修改（成功生效）
 
      ````bash
-      GRUB_CMDLINE_LINUX行添加console=tty0 console=ttyS0,115200n8 并保存 
+      GRUB_CMDLINE_LINUX行添加console=tty0 console=ttyS0,115200n8 并保存
       更新配置：sudo update-grub
-      
+
       文档手册：
       https://support.huawei.com/enterprise/zh/doc/EDOC1100311721/39c7c293
      ````
@@ -133,7 +137,7 @@ sudo chmod 777 ~/.vnc/xstartup
      cd /etc/X11
      cp xorg.conf.failsafe xorg.conf
      reboot
-     
+
      复制一下 xorg.conf.failsafe 文件为 xorg.conf，然后重启。
      ````
 
@@ -152,7 +156,7 @@ sudo chmod 777 ~/.vnc/xstartup
      sudo reboot
      ````
 
-     
+
 
 ### 源码安装程序
 
@@ -167,7 +171,7 @@ sudo chmod 777 ~/.vnc/xstartup
   3. 编译安装
 
      ````bash
-     [root@localhost git-2.9.3]# make configure  
+     [root@localhost git-2.9.3]# make configure
          GEN configure
      [root@localhost git-2.9.3]# ./configure prefix=/usr/local/git/  //配置git安装路径
      [root@localhost git-2.9.3]# make && make install  //编译并且安装
@@ -178,15 +182,14 @@ sudo chmod 777 ~/.vnc/xstartup
      ````bash
      1. /bin/sh: 1: autoconf: not found
      ##未安装 autoconf，是产生makefile文件的工具，就是用来编译的工具。
-     
+
      2. CC credential-store.o
      	In file included from cache.h:4:0,
      	from credential-store.c:1:
      	git-compat-util.h:280:25: 致命错误：openssl/ssl.h：没有那个文件或目录
      ##报这个错误的原因是没有安装libssl-dev，需要sudo yum install openssl-devel
-     
+
      3. cache.h:19:18: fatal error zlib.h: 没有那个文件或目录
      ##未安装zlib1g-dev
      ````
 
-     
