@@ -102,3 +102,64 @@ http://192.168.10.43:3000/
 ```
 
 ### K8S 部署Gitlab
+
+### Gitlab自签名证书
+
+#### 建立认证目录，存放证书文件
+
+```shell
+mkdir -p /etc/gitlab/ssl
+chmod 700 /etc/gitlab/ssl
+```
+
+#### 创建证书文件具体步骤
+1. 从原始证书中提取私钥,一般使用自签名证书是没有的。
+
+```shell
+openssl rsa -in /etc/gitlab/ssl/gitlab.bybcs.com.original -out /etc/gitlab/ssl/gitlab.bybcs.com.key
+```
+
+2. RSA 密钥对和证书签名请求（CSR）：使用 OpenSSL 工具生成一个新的 RSA 密钥对，并创建一个证书签名请求（CSR）。
+
+```shell
+openssl req -nodes -newkey rsa:2048 -keyout gitlab.bybcs.com.key -out gitlab.bybcs.com.csr
+```
+
+3. 自签名证书：从证书签名请求（CSR）中生成一个自签名的 x509 证书
+
+```shell
+openssl x509 -req -days 36500 -in /etc/gitlab/ssl/gitlab.bybcs.com.csr -signkey /etc/gitlab/ssl/gitlab.bybcs.com.key -out /etc/gitlab/ssl/gitlab.bybcs.com.crt
+```
+
+4. 移除证书请求文件并设置文件权限
+
+```shell
+rm -v /etc/gitlab/ssl/gitlab.bybcs.com.csr
+chmod 600 /etc/gitlab/ssl/gitlab.bybcs.com.*
+```
+
+5. 复制证书到gitlab目录
+
+```shell
+cp /etc/gitlab/ssl/gitlab.bybcs.com.crt /etc/gitlab/trusted-certs/
+```
+
+#### 修改配置文件
+1. 修改文件gitlab.rb
+```shell
+vi /etc/gitlab/gitlab.rb
+
+#修改下列值
+external_url 'https://gitlab.bybcs.com'
+letsencrypt['enable'] = false   #有的可能键是entsencrypt
+nginx['redirect_http_to_https'] = true
+nginx['ssl_certificate'] = '/etc/gitlab/ssl/gitlab.bybcs.com.crt'
+nginx['ssl_certificate_key'] = '/etc/gitlab/ssl/gitlab.bybcs.com.key'
+```
+
+2. gitlab更新配置和重新启动
+
+```shell
+gitlab-ctl reconfigure
+gitlab-ctl restart
+```

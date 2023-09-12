@@ -64,3 +64,22 @@ gitlab-rake gitlab:backup:restore BACKUP=1694136701_2023_09_08_14.10.2
 # 最后别忘记了重新加载 gitlab.rb 和 gitlab-secrets.json 文件
 gitlab-ctl reconfigure
 ```
+
+### 会遇到的问题归纳
+1. root密码迁移后失效
+
+```shell
+# 命令修改root密码
+gitlan-rails console
+u=User.find(1)  # root用户的id=1
+u.password='yourPassword'   # 输入你的密码
+u.save!   # 保存修改
+exit
+```
+
+2. 需要外网映射445端口失败
+
+```shell
+外网映射80端口有时会因为安全策略无法访问，所以映射445（https）端口，
+失败无法访问是因为你的内网服务没有安装证书，因为https需要证书支持。
+```
