@@ -92,4 +92,21 @@ ntpq -p
 
 如果一切正常，您应该能够看到与NTP服务器的同步状态和时间偏移量。
 
+### 检查服务
+- 使用 ntpstat 命令检查 NTP 状态
+
+```shell
+# ntpstat 命令根据 NTP 同步状态返回三种状态码。详情如下。
+0： 如果时钟同步则返回 0。
+1： 如果时钟不同步则返回 1。
+2： 如果时钟状态不确定，则返回 2，例如 ntpd 不可联系时。
+
+# 正常情况如下
+ntpstat
+
+synchronised to NTP server (192.168.1.8) at stratum 3
+   time correct to within 508 ms
+   polling server every 64 s
+```
+
 通过以上简易指南，你已经成功部署了NTP服务，实现了服务器时间的同步和准确性。NTP是保障服务器稳定运行和安全性的关键服务，确保各个服务器的时钟保持同步十分重要。
